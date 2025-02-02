@@ -2,11 +2,21 @@ package com.example;
 
 import java.util.List;
 
+// Класс Feline
 public class Feline extends Animal implements Predator {
+    private Animal animal;
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
 
     @Override
     public List<String> eatMeat() throws Exception {
-        return getFood("Хищник");
+        if (this.animal == null) {
+            return super.getFood("Хищник");
+        } else {
+            return this.animal.getFood("Хищник");
+        }
     }
 
     @Override
@@ -21,5 +31,4 @@ public class Feline extends Animal implements Predator {
     public int getKittens(int kittensCount) {
         return kittensCount;
     }
-
 }
